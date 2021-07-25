@@ -22,4 +22,7 @@ def deployEnemies(n, rows, length):
                 
         return list_of_enemies
 
-deployEnemies(5, 5, 300)
+def collision(x1, y1, x2, y2):
+    x = x1 - x2
+    y = y1 -y2   
+    return x * y > 0

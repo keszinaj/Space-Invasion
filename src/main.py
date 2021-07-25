@@ -39,7 +39,7 @@ class protagonist(object):
     #draw protagonist
     def draw(self):
         game.win.blit(self.flyCenter , (self.x, self.y))
-        self.hitbox= (self.x , self.y, 92, 75) # ta czerwona ramka
+        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
         pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
 
 
@@ -57,7 +57,7 @@ class enemy(object):
         game.win.blit(self.skin , (self.x, self.y))
         #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
         self.y += self.vel
-        self.hitbox= (self.x , self.y, 92, 92) # ta czerwona ramka
+        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
         pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
     def hit(self):
         self.health -= 1
@@ -83,7 +83,7 @@ def deployEnemies(n, rows, length):
                 print(" x = ", p_x)
                 #dobra to gówno ale zobaczmy jak działa
                 firs_col += firs_col
-                list_of_enemies.append(enemy(p_x, -p_y, 10, 10))
+                list_of_enemies.append(enemy(p_x, -p_y, 92, 92, pygame.image.load('../assets/enemyUFO.png')))
             first_y  += first_y_prev
                 
         return list_of_enemies
@@ -102,8 +102,11 @@ class bullet(object):
         game.win.blit(self.skin , (self.x, self.y))
         self.y -= 4
         
-        
-
+#new idea you mst check if thtat thinks works
+def collision(ob1, ob2):
+    x = (ob1.x - ob2.x)
+    y = ob1.y - ob2.y     
+    return x * y > 0
 
 pygame.init()
 game = global_settings(1000, 1000)
@@ -121,7 +124,7 @@ def main():
 
     # nie wiem czy to najlepszy pomysł z tym deley
     delayShoot = 0
-    player = protagonist(0, 0, 99, 75)
+    player = protagonist(0, 0, 92, 75)
     proba_wroga = deployEnemies(2, 5, 800)
     bullets = []
     player.draw()
