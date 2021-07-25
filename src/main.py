@@ -39,21 +39,32 @@ class protagonist(object):
     #draw protagonist
     def draw(self):
         game.win.blit(self.flyCenter , (self.x, self.y))
+        self.hitbox= (self.x , self.y, 92, 75) # ta czerwona ramka
+        pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
 
 
 class enemy(object):
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, skin):
         # x and y to spawn enemy
         self.x = x
         self.y = y
         self.width = width
         self.height =height
         self.vel = 2
-        self.skin = pygame.image.load('../assets/enemyShip.png')
+        self.skin = skin
+        self.health = 1
     def draw(self):
         game.win.blit(self.skin , (self.x, self.y))
         #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
         self.y += self.vel
+        self.hitbox= (self.x , self.y, 92, 92) # ta czerwona ramka
+        pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
+    def hit(self):
+        self.health -= 1
+        if(self.health == 0):
+            self.visible = False
+        print('hit')
+
 
 
 # no ta funkcja to jest na 100% do poprawy ale na razie zostawie tak jak jest bo skupmy się na działaniu samej gry
@@ -129,7 +140,6 @@ def main():
                 game.run = False
         #handle keys
         keys = pygame.key.get_pressed()
-
         if keys[pygame.K_LEFT] and player.x>0:
             player.x -= player.vel
         elif keys[pygame.K_RIGHT] and game.width > player.x +player.width:

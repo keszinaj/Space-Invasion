@@ -2,3 +2,13 @@ dobra a więc jaki jest pan na gre?
 a więc mamy obroinić planetę przed atakiem złych sił nadlatujący z kosmicznej przesytrzeni
 gracz może się poruszać strzałkami dowolną strone ale nie może wyjść poza planesze
 strzela spacją 
+
+Todo następnym razenm:
+[ ]dodaj latających wrogów, tam w assets nie ma zbyt wielkiego wyboru ale możesz sobie poszukać 
+w necie ten gościu powstawiał jeszcze podobne grafiki free to use
+(chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
+[ ] dodaj bossów
+[ ] dodaj menu
+[ ] dodaj stzrelanie? czy enemy może strzelać?(może tylko boss, a może nie) ( no na 1 lvl i tak nie będą stzreleli)
+[ ] dodaj punkty i highscore na menu
+[ ]
