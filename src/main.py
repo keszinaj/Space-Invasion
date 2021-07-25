@@ -53,11 +53,16 @@ class enemy(object):
         self.vel = 2
         self.skin = skin
         self.health = 1
+         #for hit check
+        self.rect = pygame.Rect(x, y, width, height)
+
     def draw(self):
         game.win.blit(self.skin , (self.x, self.y))
         #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
         self.y += self.vel
         self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+         #for hit check
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
     def hit(self):
         self.health -= 1
@@ -98,9 +103,13 @@ class bullet(object):
         self.height =height
         self.vel = 12
         self.skin =  pygame.image.load('../assets/laserGreen.png')
+        #for hit check
+        self.rect = pygame.Rect(x, y, width, height)
     def draw(self):
         game.win.blit(self.skin , (self.x, self.y))
         self.y -= 4
+         #for hit check
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         
 #new idea you mst check if thtat thinks works
 def collision(ob1, ob2):
@@ -121,6 +130,10 @@ def main():
         if len(bullets) != 0:
             for b in bullets:
                 b.draw()
+                 #for hit check
+                for e in proba_wroga:
+                    if b.rect.colliderect(e.rect):
+                        print("aaaa")
 
     # nie wiem czy to najlepszy pomysł z tym deley
     delayShoot = 0
@@ -153,7 +166,7 @@ def main():
             player.y += player.vel
         if keys[pygame.K_SPACE]:
             if delayShoot == 0:
-                bullets.append(bullet(player.x + 45, player.y - 37, 10, 10))
+                bullets.append(bullet(player.x + 45, player.y - 37, 9, 33))
                 delayShoot = 22
             else:
                 delayShoot -=1
