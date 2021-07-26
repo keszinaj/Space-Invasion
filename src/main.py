@@ -57,6 +57,7 @@ class enemy(object):
         self.rect = pygame.Rect(x, y, width, height)
 
     def draw(self):
+        
         game.win.blit(self.skin , (self.x, self.y))
         #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
         self.y += self.vel
@@ -118,7 +119,7 @@ def collision(ob1, ob2):
     return x * y > 0
 
 pygame.init()
-game = global_settings(1000, 1000)
+game = global_settings(900, 900)
 
 def main():
     #redraw window
@@ -126,14 +127,19 @@ def main():
         game.draw()
         player.draw()
         for wrog in proba_wroga:
-            wrog.draw()
+            if wrog.health == 0:
+                proba_wroga.pop(proba_wroga.index(wrog))
+            else:
+              wrog.draw()
         if len(bullets) != 0:
             for b in bullets:
                 b.draw()
                  #for hit check
                 for e in proba_wroga:
                     if b.rect.colliderect(e.rect):
+                        bullets.pop(bullets.index(b))
                         print("aaaa")
+                        e.hit()
 
     # nie wiem czy to najlepszy pomysł z tym deley
     delayShoot = 0

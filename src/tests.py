@@ -26,3 +26,10 @@ def collision(x1, y1, x2, y2):
     x = x1 - x2
     y = y1 -y2   
     return x * y > 0
+
+sprite = Sprite(10, 10, 'my_sprite')
+bullet = Bullet(20, 10)
+if bullet.is_collided_with(sprite):
+    print('collision!')
+    bullet.kill()
+    sprite.kill()
