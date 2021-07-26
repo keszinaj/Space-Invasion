@@ -36,8 +36,14 @@ class protagonist(object):
         self.flyLeft = pygame.image.load('../assets/playerLeft.png')
         self.flyRight = pygame.image.load('../assets/playerRight.png')
         self.flyCenter = pygame.image.load('../assets/player.png')
+        # self health:
+        self.health = 4   
+        self.healthImage = pygame.image.load('../assets/life.png')
     #draw protagonist
     def draw(self):
+        for h in range(self.health):
+            game.win.blit(self.healthImage , (game.width - 50, game.height - (h + 1) * 50))
+
         game.win.blit(self.flyCenter , (self.x, self.y))
         self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
         pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
@@ -112,11 +118,7 @@ class bullet(object):
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         
-#new idea you mst check if thtat thinks works
-def collision(ob1, ob2):
-    x = (ob1.x - ob2.x)
-    y = ob1.y - ob2.y     
-    return x * y > 0
+
 
 pygame.init()
 game = global_settings(900, 900)
