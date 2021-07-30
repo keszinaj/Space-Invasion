@@ -41,13 +41,13 @@ def main():
                 proba_wroga.pop(proba_wroga.index(wrog))
             else:
               wrog.draw()
-        if len(bullets) != 0:
-            for b in bullets:
+        if len(friendly_bullets) != 0:
+            for b in friendly_bullets:
                 b.draw()
                  #for hit check
                 for e in proba_wroga:
                     if b.rect.colliderect(e.rect):
-                        bullets.pop(bullets.index(b))
+                        friendly_bullets.pop(friendly_bullets.index(b))
                         print("aaaa")
                         e.hit()
 
@@ -56,7 +56,7 @@ def main():
     player = protagonist(0, 0, 92, 75, game)
     #deployEnemies(rows, length, width,  game, level):
     proba_wroga = deployEnemies(game)
-    bullets = []
+    friendly_bullets = []
     player.draw()
     for wrog in proba_wroga:
         wrog.draw()
@@ -83,7 +83,7 @@ def main():
             player.y += player.vel
         if keys[pygame.K_SPACE]:
             if delayShoot == 0:
-                bullets.append(bullet(player.x + 45, player.y - 37, 9, 33))
+                friendly_bullets.append(bullet(player.x + 45, player.y - 37, 9, 33))
                 delayShoot = 22
             else:
                 delayShoot -=1
