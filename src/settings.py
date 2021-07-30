@@ -18,7 +18,7 @@ class global_settings(object):
         # level logic
         self.current_level = 1
         self.levels = {
-            1 : level(800, 12, 0, False, False),
+            1 : level(800, 12, 12, False, False),
             2 : level(800, 12, 0, False, False),
             3 : level(800, 12, 0, False, False),
             4 : level(800, 12, 0, False, False),

@@ -14,9 +14,9 @@ def deployEnemies(game):
             
             list_of_enemies.append(enemy(x, y, 92, 92, game.levels[game.current_level].ufo_skin, game))
         for e in range(game.levels[game.current_level].amoun_of_ships):
-            y = -random.randint(0, game.length)
+            y = -random.randint(0, game.levels[game.current_level].length)
             x = random.randint(0, game.width)
-            list_of_enemies.append(enemy(x, y, 92, 92, game.levels[game.current_level].ship_skin, game))
+            list_of_enemies.append(enemy(x, y, 92, 52, game.levels[game.current_level].ship_skin, game))
             
                 
         return list_of_enemies
