@@ -2,82 +2,9 @@
 import pygame
 import os
 import random
+from settings import global_settings
+from characters import protagonist, enemy
 #here i save all most important varibles
-class global_settings(object):
-    def __init__(self, width, height):
-        #size of window
-        self.width = width
-        self.height = height
-        #window
-        self.win = pygame.display.set_mode((self.width, self.height))
-        pygame.display.set_caption("Space Invasion")
-        self.clock = pygame.time.Clock()
-        #load background
-        self.backg = pygame.image.load("../assets/backg.jpeg")
-        self.win.blit(self.backg, (0,0)) #hmm should i delete it?
-        self.run = True #hmmm
-    # to redraw the windows
-    def draw(self):
-        self.win.blit(self.backg, (0,0))
-        
-
-
-class protagonist(object):
-    def __init__(self, x, y, width, height):
-        # x y to spawn protagonist
-        self.x = x
-        self.y = y
-        # height and width of protagonist
-        self.width = width
-        self.height = height
-        #how much on x and y protagonist fly
-        self.vel = 3
-        #skins for protagonist
-        self.flyLeft = pygame.image.load('../assets/playerLeft.png')
-        self.flyRight = pygame.image.load('../assets/playerRight.png')
-        self.flyCenter = pygame.image.load('../assets/player.png')
-        # self health:
-        self.health = 4   
-        self.healthImage = pygame.image.load('../assets/life.png')
-    #draw protagonist
-    def draw(self):
-        for h in range(self.health):
-            game.win.blit(self.healthImage , (game.width - 50, game.height - (h + 1) * 50))
-
-        game.win.blit(self.flyCenter , (self.x, self.y))
-        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
-        pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
-
-
-class enemy(object):
-    def __init__(self, x, y, width, height, skin):
-        # x and y to spawn enemy
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height =height
-        self.vel = 2
-        self.skin = skin
-        self.health = 1
-         #for hit check
-        self.rect = pygame.Rect(x, y, width, height)
-
-    def draw(self):
-        
-        game.win.blit(self.skin , (self.x, self.y))
-        #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
-        self.y += self.vel
-        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
-         #for hit check
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        pygame.draw.rect(game.win, (255,0,0), self.hitbox, 2)
-    def hit(self):
-        self.health -= 1
-        if(self.health == 0):
-            self.visible = False
-        print('hit')
-
-
 
 # no ta funkcja to jest na 100% do poprawy ale na razie zostawie tak jak jest bo skupmy się na działaniu samej gry
 def deployEnemies(n, rows, length):
@@ -95,7 +22,7 @@ def deployEnemies(n, rows, length):
                 print(" x = ", p_x)
                 #dobra to gówno ale zobaczmy jak działa
                 firs_col += firs_col
-                list_of_enemies.append(enemy(p_x, -p_y, 92, 92, pygame.image.load('../assets/enemyUFO.png')))
+                list_of_enemies.append(enemy(p_x, -p_y, 92, 92, pygame.image.load('../assets/enemyUFO.png'), game))
             first_y  += first_y_prev
                 
         return list_of_enemies
@@ -145,7 +72,7 @@ def main():
 
     # nie wiem czy to najlepszy pomysł z tym deley
     delayShoot = 0
-    player = protagonist(0, 0, 92, 75)
+    player = protagonist(0, 0, 92, 75, game)
     proba_wroga = deployEnemies(2, 5, 800)
     bullets = []
     player.draw()
