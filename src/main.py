@@ -1,31 +1,12 @@
 #main file of my game
 import pygame
-import os
-import random
 from settings import global_settings
 from characters import protagonist, enemy
+from logic_function import deployEnemies
+from lvl import level
 #here i save all most important varibles
 
-# no ta funkcja to jest na 100% do poprawy ale na razie zostawie tak jak jest bo skupmy się na działaniu samej gry
-def deployEnemies(n, rows, length):
-        list_of_enemies = []
-        p_y = 0
 
-        first_y = length / rows    
-        first_y_prev = first_y    
-        for i in range(rows):
-            p_x = 0
-            firs_col = 600/n #to trzebas zmenić <-------
-            for j in range(n):
-                p_x = random.randint(p_x, firs_col)
-                p_y = random.randint(p_y, first_y )
-                print(" x = ", p_x)
-                #dobra to gówno ale zobaczmy jak działa
-                firs_col += firs_col
-                list_of_enemies.append(enemy(p_x, -p_y, 92, 92, pygame.image.load('../assets/enemyUFO.png'), game))
-            first_y  += first_y_prev
-                
-        return list_of_enemies
                 
 
 
@@ -73,7 +54,8 @@ def main():
     # nie wiem czy to najlepszy pomysł z tym deley
     delayShoot = 0
     player = protagonist(0, 0, 92, 75, game)
-    proba_wroga = deployEnemies(2, 5, 800)
+    #deployEnemies(rows, length, width,  game, level):
+    proba_wroga = deployEnemies(game)
     bullets = []
     player.draw()
     for wrog in proba_wroga:
