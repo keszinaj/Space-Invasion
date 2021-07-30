@@ -18,7 +18,7 @@ class protagonist(object):
         self.healthImage = pygame.image.load('../assets/life.png')
         #for checking if hit
         self.rect = pygame.Rect(x, y, width, height)
-
+        
         self.game = game
     #draw protagonist
     def draw(self):
@@ -32,7 +32,7 @@ class protagonist(object):
 
 
 class enemy(object):
-    def __init__(self, x, y, width, height, skin, game):
+    def __init__(self, x, y, width, height, skin, game, can_shot):
         # x and y to spawn enemy
         self.x = x
         self.y = y
@@ -44,6 +44,8 @@ class enemy(object):
          #for hit check
         self.rect = pygame.Rect(x, y, width, height)
         self.game =game
+        self.delayShoot = 0
+        self.can_shot = can_shot
 
     def draw(self):
         
