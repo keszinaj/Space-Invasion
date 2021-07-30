@@ -91,8 +91,12 @@ def main():
             keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT] and player.x>0:
                 player.x -= player.vel
+                player.pos = 2
             elif keys[pygame.K_RIGHT] and game.width > player.x +player.width:
                 player.x += player.vel
+                player.pos = 3
+            else: 
+                player.pos = 1 # chyba trzeba to zmienić
             if keys[pygame.K_UP] and player.y>0:
                 player.y -= player.vel
             elif keys[pygame.K_DOWN]and game.height > player.y+player.height:

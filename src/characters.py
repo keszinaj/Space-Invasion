@@ -9,10 +9,13 @@ class protagonist(object):
         self.height = height
         #how much on x and y protagonist fly
         self.vel = 3
+        #position for skin 1 def 2-left 3-right
+        self.pos = 1
         #skins for protagonist
         self.flyLeft = pygame.image.load('../assets/playerLeft.png')
         self.flyRight = pygame.image.load('../assets/playerRight.png')
         self.flyCenter = pygame.image.load('../assets/player.png')
+        self.flyDamaged = pygame.image.load('../assets/playerDamaged.png')
         # self health:
         self.health = 4   
         self.healthImage = pygame.image.load('../assets/life.png')
@@ -24,8 +27,15 @@ class protagonist(object):
     def draw(self):
         for h in range(self.health):
             self.game.win.blit(self.healthImage , (self.game.width - 50, self.game.height - (h + 1) * 50))
+        if self.pos == 1 and self.health > 2:
+            self.game.win.blit(self.flyCenter , (self.x, self.y))
+        elif self.health <= 2:#IDK chyba to wywale
+            self.game.win.blit(self.flyDamaged , (self.x, self.y))
+        elif self.pos == 2:
+            self.game.win.blit(self.flyLeft , (self.x, self.y))
+        elif self.pos == 3: 
+            self.game.win.blit(self.flyRight  , (self.x, self.y))
 
-        self.game.win.blit(self.flyCenter , (self.x, self.y))
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
         pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
