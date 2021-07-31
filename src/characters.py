@@ -8,7 +8,7 @@ class protagonist(object):
         self.width = width
         self.height = height
         #how much on x and y protagonist fly
-        self.vel = 3
+        self.vel = 5
         #position for skin 1 def 2-left 3-right
         self.pos = 1
         #skins for protagonist

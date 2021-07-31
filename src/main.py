@@ -4,6 +4,7 @@ from settings import global_settings
 from characters import protagonist, enemy
 from logic_function import deployEnemies
 from lvl import level
+from button_cl import button
 #here i save all most important varibles
 
 
@@ -30,9 +31,9 @@ class bullet(object):
 
 
 pygame.init()
-game = global_settings(900, 900)
+game = global_settings(1000, 900)
 
-def main():
+def game_main():
     def redraw():
         game.draw()
         player.draw()
@@ -113,4 +114,50 @@ def main():
             redraw()
             pygame.display.update()
 
-main()
+
+#counter = 0
+
+
+
+
+def main_menu():
+    logo = pygame.image.load('../assets/logo.png')
+    play = button(410, 450, 'Play', game)
+    highscore = button(410, 550, 'Play Again?', game)
+    info = button(410, 650, 'Info', game)
+    quit = button(410, 750, 'Quit', game)
+
+
+    run = True
+    while run:
+
+        game.draw()
+        game.win.blit(logo , (50, 10))
+        if play.draw_button():
+            game_main()
+        if highscore.draw_button():
+            print('aaaaa')
+        if info.draw_button():
+            print('Quit')
+        if quit.draw_button():
+            run = False
+            print('Quit')
+        
+        
+
+        #counter_img = font.render(str(counter), True, red)
+        #screen.blit(counter_img, (280, 450))
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False	
+
+        
+        pygame.display.update()
+
+
+    pygame.quit()
+        
+main_menu()
+#game_main()
