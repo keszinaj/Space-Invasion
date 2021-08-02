@@ -23,17 +23,22 @@ class global_settings(object):
         self.max_level = 5
         self.current_level = 1
         self.levels = {
-            1 : level(1000, 10, 10, False, False),
-            2 : level(1000, 12, 12, False, False),
-            3 : level(800, 12, 0, False, False),
-            4 : level(800, 12, 0, False, False),
-            5 : level(800, 12, 0, False, False),     
+            1 : level(1800, 27, 0, False, False),
+            2 : level(1800, 35, 0, False, False),
+            3 : level(1500, 29, 5, False, False),
+            4 : level(1500, 25, 10, False, False),
+            5 : level(1400, 30, 20, False, False),     
         }
         self.finishLevel = False
         self.finishGame = False
     # to redraw the windows
     def draw(self):
         self.win.blit(self.backg, (0,0))
+    def draw_score(self):
+        text_score = "Score: " + str(self.score)
+        score_img = self.font.render(text_score , True, (255, 255, 255))
+        self.win.blit(score_img, (20, 10))
+        
 
 
 

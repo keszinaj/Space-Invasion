@@ -34,11 +34,33 @@ class bullet(object):
 
 pygame.init()
 game = global_settings(1000, 900)
+def info_win():
+    game.draw()
+    text_1 = "Space Invasion is a simple shooter game."
+    text_2 = "Player must destroy as much enemie's ship as he can." 
+    text_3 = "Tap escape to leave"
+    text1_img = game.font.render(text_1, False, (255, 255, 255))
+    text2_img = game.font.render(text_2, False, (255, 255, 255))
+    text3_img = game.font.render(text_3, False, (255, 255, 255))
+    game.win.blit(text1_img, (10, 150))
+    game.win.blit(text2_img, (10, 200))
+    game.win.blit(text3_img, (10, 800))
+    pygame.display.update()
+    check = True
+    while check:
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                check = False
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    
 
 def game_main():
     def redraw():
         game.draw()
         player.draw()
+        game.draw_score()
         for e in enemies:
             if e.health == 0:
                 enemies.pop(enemies.index(e))
@@ -55,7 +77,7 @@ def game_main():
             if e.y > 0 and e.can_shot:
                 if e.delayShoot == 0:
                     enemy_bullet.append(bullet(1, e.x + 45, e.y + 36, 9, 33))
-                    e.delayShoot = 40
+                    e.delayShoot = 100
                 else:
                     e.delayShoot -= 1
         if len(friendly_bullets) != 0:
@@ -76,6 +98,7 @@ def game_main():
                     print("aaaa")
                     player.health -= 1
                     #player.hit()
+        
     delayShoot = 0
     player = protagonist(game.height - 20, game.width / 2 - 40, 92, 75, game)
    
@@ -113,6 +136,7 @@ def game_main():
                 if event.type == pygame.QUIT:
                     game.finishGame = True
                     game.finishLevel = True
+                   
             #handle keys
             keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT] and player.x>0:
@@ -155,7 +179,7 @@ def game_main():
 def main_menu():
     logo = pygame.image.load('../assets/logo.png')
     play = button(410, 450, 'Play', game)
-    highscore = button(410, 550, 'Play Again?', game)
+    highscore = button(410, 550, 'High Score', game)
     info = button(410, 650, 'Info', game)
     quit = button(410, 750, 'Quit', game)
 
@@ -172,7 +196,8 @@ def main_menu():
         if highscore.draw_button():
             print('aaaaa')
         if info.draw_button():
-            print('Quit')
+            info_win()
+            print('Info win')
         if quit.draw_button():
             run = False
             print('Quit')
