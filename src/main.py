@@ -83,6 +83,7 @@ def game_main():
             game.finishLevel = True
             #<- add screen YOU WINNN
         else:
+            game.finishLevel = False
             enemies = deployEnemies(game)
             friendly_bullets = []
             enemy_bullet = []
@@ -93,7 +94,7 @@ def game_main():
             text_len = text_img.get_width()
             game.win.blit(text_img, (game.width / 2 - (text_len/2), 200))
             pygame.display.update()
-            time.sleep(3)
+            time.sleep(2)
             
 
 
@@ -132,6 +133,9 @@ def game_main():
                 pass
             redraw()
             pygame.display.update()
+            if len(enemies) == 0:
+                game.current_level += 1
+                game.finishLevel = True
 
 
 #counter = 0
