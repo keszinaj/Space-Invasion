@@ -5,6 +5,8 @@ from characters import protagonist, enemy
 from logic_function import deployEnemies
 from lvl import level
 from button_cl import button
+import time
+
 #here i save all most important varibles
 
 
@@ -38,7 +40,7 @@ def game_main():
         game.draw()
         player.draw()
         for e in enemies:
-            if e.health == 0:
+            if e.health == 0 or e.y > game.height:
                 enemies.pop(enemies.index(e))
             elif e.rect.colliderect(player.rect):
                 enemies.pop(enemies.index(e))
@@ -70,14 +72,31 @@ def game_main():
                     player.health -= 1
                     #player.hit()
     delayShoot = 0
-    player = protagonist(0, 0, 92, 75, game)
+    player = protagonist(game.height - 20, game.width / 2 - 40, 92, 75, game)
+   
+    
+
     while not game.finishGame:
-        enemies = deployEnemies(game)
-        friendly_bullets = []
-        enemy_bullet = []
-        player.draw()
-        for e in enemies:
-            e.draw()
+        #check if game is finished and set varible to exit loops
+        if game.current_level > game.max_level:
+            game.finishGame = True
+            game.finishLevel = True
+            #<- add screen YOU WINNN
+        else:
+            enemies = deployEnemies(game)
+            friendly_bullets = []
+            enemy_bullet = []
+            game.draw()
+            player.draw()
+            text_level = "Level    " + str(game.current_level)
+            text_img = game.font_2.render(text_level, True, (255, 255, 255))
+            text_len = text_img.get_width()
+            game.win.blit(text_img, (game.width / 2 - (text_len/2), 200))
+            pygame.display.update()
+            time.sleep(3)
+            
+
+
         while not game.finishLevel:
             game.clock.tick(60)#fps
             #handle delay shoot
