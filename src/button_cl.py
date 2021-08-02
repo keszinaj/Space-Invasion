@@ -3,10 +3,10 @@ import pygame
 class button():
 		
 	#colours for button and text
-	button_col = (255, 0, 0)
-	hover_col = (75, 225, 255)
-	click_col = (50, 150, 255)
-	text_col = (0, 0, 0) #black
+	button_col = ( 91, 72, 99 )
+	hover_col = (179, 0, 179)
+	click_col = (85, 34, 93)
+	text_col = (255, 255, 255) #black
 	width = 180
 	height = 70
 
@@ -43,8 +43,8 @@ class button():
 			pygame.draw.rect(self.game.win, self.button_col, button_rect)
 		
 		#add shading to button
-		pygame.draw.line(self.game.win, (255, 255, 255), (self.x, self.y), (self.x + self.width, self.y), 2)
-		pygame.draw.line(self.game.win, (255, 255, 255), (self.x, self.y), (self.x, self.y + self.height), 2)
+		pygame.draw.line(self.game.win, (0, 0, 0), (self.x, self.y), (self.x + self.width, self.y), 2)
+		pygame.draw.line(self.game.win, (0, 0, 0), (self.x, self.y), (self.x, self.y + self.height), 2)
 		pygame.draw.line(self.game.win, (0, 0, 0), (self.x, self.y + self.height), (self.x + self.width, self.y + self.height), 2)
 		pygame.draw.line(self.game.win, (0, 0, 0), (self.x + self.width, self.y), (self.x + self.width, self.y + self.height), 2)
 

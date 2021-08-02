@@ -40,11 +40,16 @@ def game_main():
         game.draw()
         player.draw()
         for e in enemies:
-            if e.health == 0 or e.y > game.height:
+            if e.health == 0:
                 enemies.pop(enemies.index(e))
+                game.score += e.points
+                print(game.score)
             elif e.rect.colliderect(player.rect):
                 enemies.pop(enemies.index(e))
                 player.health -= 1
+                game.score -= 10
+            elif e.y > game.height:
+                enemies.pop(enemies.index(e))
             else:
                 e.draw()
             if e.y > 0 and e.can_shot:
@@ -136,6 +141,10 @@ def game_main():
             if len(enemies) == 0:
                 game.current_level += 1
                 game.finishLevel = True
+            if player.health == 0:
+                game.finishLevel = True
+                game.finishGame = True
+                
 
 
 #counter = 0
@@ -158,6 +167,8 @@ def main_menu():
         game.win.blit(logo , (50, 10))
         if play.draw_button():
             game_main()
+            game.finishGame = False
+            game.current_level = 1
         if highscore.draw_button():
             print('aaaaa')
         if info.draw_button():

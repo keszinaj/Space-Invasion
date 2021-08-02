@@ -42,7 +42,7 @@ class protagonist(object):
 
 
 class enemy(object):
-    def __init__(self, x, y, width, height, skin, game, can_shot):
+    def __init__(self, x, y, width, height, skin, game, can_shot, points):
         # x and y to spawn enemy
         self.x = x
         self.y = y
@@ -56,6 +56,7 @@ class enemy(object):
         self.game =game
         self.delayShoot = 0
         self.can_shot = can_shot
+        self.points = points
 
     def draw(self):
         

@@ -7,8 +7,10 @@ Todo następnym razenm:
 [ ]dodaj latających wrogów, tam w assets nie ma zbyt wielkiego wyboru ale możesz sobie poszukać 
 w necie ten gościu powstawiał jeszcze podobne grafiki free to use
 (chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
+[ ] dodaj wynik
+[ ] dodaj przejście z lvl na lvl 
 [ ] dodaj bossów
 [ ] dodaj menu
-[ ] dodaj stzrelanie? czy enemy może strzelać?(może tylko boss, a może nie) ( no na 1 lvl i tak nie będą stzreleli)
 [ ] dodaj punkty i highscore na menu
-[ ]
+[ ] dodaj jakiąś oznake jak coś zostanie trafione
+[ ] popraw algorytm rozstawiania się przeciwników

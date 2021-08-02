@@ -10,14 +10,16 @@ class global_settings(object):
         self.win = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption("Space Invasion")
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont('Constantia', 30)
-        self.font_2 = pygame.font.SysFont('Constantia', 90)
+        # myfont = pygame.font.SysFont('Raleway', 72, bold=True, italic=False)
+        self.font = pygame.font.SysFont('Constantia', 30, bold=True, italic=False)
+        self.font_2 = pygame.font.SysFont('Constantia', 90, bold=True, italic=False)
         
         #load background
         self.backg = pygame.image.load("../assets/backg.jpeg")
         self.win.blit(self.backg, (0,0)) #hmm should i delete it?
         self.run = True #hmmm
         # level logic
+        self.score = 0
         self.max_level = 5
         self.current_level = 1
         self.levels = {
