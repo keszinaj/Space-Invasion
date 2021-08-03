@@ -164,6 +164,7 @@ def game_main():
             game.finishGame = True
             game.finishLevel = True
             you_win()
+            game.check_if_new_high_score(game.score)
         else:
             game.finishLevel = False
             enemies = deployEnemies(game)
@@ -222,6 +223,7 @@ def game_main():
             if player.health == 0:
                 game.finishLevel = True
                 game.finishGame = True
+                game.check_if_new_high_score(game.score)
                 
 
 

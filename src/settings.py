@@ -47,7 +47,22 @@ class global_settings(object):
             list.append(line)
         f.close()
         self.highscore = list
-        
+    def check_if_new_high_score(self, score):
+        yes = False
+        for s in self.highscore:
+            if s < score:
+                self.highscore.insert(self.highscore.index(s), score)
+                self.highscore.pop()
+                yes = True
+                break
+        if yes:
+            f = open("./high_score.txt", "w")
+            for l in self.highscore:
+                straa = str(l) + "\n" 
+                f.write(straa)
+            f.close()
+        return yes
+                    
 
 
 
