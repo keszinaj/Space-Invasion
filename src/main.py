@@ -34,6 +34,32 @@ class bullet(object):
 
 pygame.init()
 game = global_settings(1000, 900)
+def you_win():
+    #game.draw()
+    text_1 = "You Win!"
+    text_2 = "Score: " + str(game.score)
+    text_3 = "Click escape to leave"
+    text1_img = game.font_2.render(text_1, False, (255, 255, 255))
+    text2_img = game.font_2.render(text_2, False, (255, 255, 255))
+    text3_img = game.font.render(text_3, False, (255, 255, 255))
+    text1_len = text1_img.get_width()
+    game.win.blit(text1_img, (game.width / 2 - (text1_len/2), 200))
+    text2_len = text2_img.get_width()
+    game.win.blit(text2_img, (game.width / 2 - (text2_len/2), 300))
+    text3_len = text3_img.get_width()
+    game.win.blit(text3_img, (game.width / 2 - (text3_len/2), 800))
+    pygame.display.update()
+    check = True
+    while check:
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                check = False
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+    
+
+
 def info_win():
     game.draw()
     text_1 = "Space Invasion is a simple shooter game."
@@ -109,7 +135,7 @@ def game_main():
         if game.current_level > game.max_level:
             game.finishGame = True
             game.finishLevel = True
-            #<- add screen YOU WINNN
+            you_win()
         else:
             game.finishLevel = False
             enemies = deployEnemies(game)
