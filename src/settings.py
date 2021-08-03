@@ -20,6 +20,7 @@ class global_settings(object):
         self.run = True #hmmm
         # level logic
         self.score = 0
+        self.highscore = []
         self.max_level = 2
         self.current_level = 1
         self.levels = {
@@ -38,6 +39,14 @@ class global_settings(object):
         text_score = "Score: " + str(self.score)
         score_img = self.font.render(text_score , True, (255, 255, 255))
         self.win.blit(score_img, (20, 10))
+    def read_highscore(self):
+        f = open("./high_score.txt", "r")
+        list = []
+        for line in f:
+            line = int(line)
+            list.append(line)
+        f.close()
+        self.highscore = list
         
 
 

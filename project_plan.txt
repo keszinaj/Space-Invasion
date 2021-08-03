@@ -8,9 +8,15 @@ Todo następnym razenm:
 w necie ten gościu powstawiał jeszcze podobne grafiki free to use
 (chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
 [ ] dodaj wynik
+
 [ ] dodaj przejście z lvl na lvl 
+
 [ ] dodaj bossów
+
 [ ] dodaj menu
-[ ] dodaj punkty i highscore na menu
+
+[ ] dodaj highscore na menu
+
 [ ] dodaj jakiąś oznake jak coś zostanie trafione
+
 [ ] popraw algorytm rozstawiania się przeciwników

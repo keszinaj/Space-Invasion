@@ -34,6 +34,34 @@ class bullet(object):
 
 pygame.init()
 game = global_settings(1000, 900)
+def highscore_win():
+    game.draw()
+    n = 1
+    print(game.highscore)
+    for h in game.highscore:
+        print(h)
+        text = str(n) + ":  " + str(h)
+        n += 1
+        text_img = game.font_2.render(text, False, (255, 255, 255))
+        text_len = text_img.get_width()
+        text_len = text_img.get_width()
+        game.win.blit(text_img, (game.width / 2 - (text_len/2), n * 100 - 50))
+
+    text_3 = "Click escape to leave"
+    text3_img = game.font.render(text_3, False, (255, 255, 255))
+    text3_len = text3_img.get_width()
+    game.win.blit(text3_img, (game.width / 2 - (text3_len/2), 800))
+    pygame.display.update()
+    check = True
+    while check:
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_ESCAPE]:
+                check = False
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+
+
 def you_win():
     #game.draw()
     text_1 = "You Win!"
@@ -124,7 +152,7 @@ def game_main():
                     print("aaaa")
                     player.health -= 1
                     #player.hit()
-        
+     
     delayShoot = 0
     player = protagonist(game.height - 20, game.width / 2 - 40, 92, 75, game)
    
@@ -208,6 +236,7 @@ def main_menu():
     highscore = button(410, 550, 'High Score', game)
     info = button(410, 650, 'Info', game)
     quit = button(410, 750, 'Quit', game)
+    game.read_highscore()   
 
 
     run = True
@@ -220,7 +249,8 @@ def main_menu():
             game.finishGame = False
             game.current_level = 1
         if highscore.draw_button():
-            print('aaaaa')
+            highscore_win()
+            print('highscore.')
         if info.draw_button():
             info_win()
             print('Info win')
