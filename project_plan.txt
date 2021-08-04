@@ -4,19 +4,14 @@ gracz może się poruszać strzałkami dowolną strone ale nie może wyjść poz
 strzela spacją 
 
 Todo następnym razenm:
-[ ]dodaj latających wrogów, tam w assets nie ma zbyt wielkiego wyboru ale możesz sobie poszukać 
-w necie ten gościu powstawiał jeszcze podobne grafiki free to use
+[ ]dodaj latających wrogów, tam w assets nie ma zbyt wielkiego wyboru ale możesz 
+sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to use
 (chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
-[ ] dodaj wynik
 
-[ ] dodaj przejście z lvl na lvl 
+[ ] dodaj jednego bosa na koniec
 
-[ ] dodaj bossów
-
-[ ] dodaj menu
-
-[ ] dodaj highscore na menu
-
-[ ] dodaj jakiąś oznake jak coś zostanie trafione
+[ ] dodaj jakiąś oznake jak coś zostanie trafione!!!!
 
 [ ] popraw algorytm rozstawiania się przeciwników
+
+[ ] dodaj ekran game over
