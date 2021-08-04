@@ -111,6 +111,8 @@ def info_win():
                     
 
 def game_main():
+    shot_effect = pygame.mixer.Sound('../assets/laser1.wav')
+    hit_effect = pygame.mixer.Sound('../assets/Explosion.wav')
     def redraw():
         game.draw()
         player.draw()
@@ -143,6 +145,7 @@ def game_main():
                     #for hit check
                     for e in enemies:
                         if b.rect.colliderect(e.rect):
+                            hit_effect.play()
                             friendly_bullets.pop(friendly_bullets.index(b))
                             print("aaaa")
                             e.hit()
@@ -153,6 +156,7 @@ def game_main():
                 if b.rect.colliderect(player.rect):
                     enemy_bullet.pop(enemy_bullet.index(b))
                     print("aaaa")
+                    hit_effect.play()
                     player.health -= 1
                     #player.hit()
      
@@ -211,6 +215,11 @@ def game_main():
                 player.y += player.vel
             if keys[pygame.K_SPACE]:
                 if delayShoot == 0:
+                    #add credit to music Author: dklon
+                    #pygame.mixer.music.load('../assets/laser1.wav')
+                    #pygame.mixer.music.play()
+                   # effect = pygame.mixer.Sound('../assets/laser1.wav')
+                    shot_effect.play()
                     friendly_bullets.append(bullet(-1, player.x + 45, player.y - 37, 9, 33))
                     delayShoot = 22
                 else:
