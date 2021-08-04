@@ -37,8 +37,8 @@ class protagonist(object):
             self.game.win.blit(self.flyRight  , (self.x, self.y))
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
-        pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
+       # self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+       # pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
 
 
 class enemy(object):
@@ -63,10 +63,10 @@ class enemy(object):
         self.game.win.blit(self.skin , (self.x, self.y))
         #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
         self.y += self.vel
-        self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+        #self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
+        #pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
     def hit(self):
         self.health -= 1
         if(self.health == 0):

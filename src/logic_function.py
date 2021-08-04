@@ -6,7 +6,8 @@ from lvl import level
 def deployEnemies(game):
     if game.levels[game.current_level].boss == False:
         list_of_enemies = []
-    
+        n = game.levels[game.current_level].length
+        
 
         for e in range(game.levels[game.current_level].amount_of_ufos):
             y = -random.randint(0, game.levels[game.current_level].length)

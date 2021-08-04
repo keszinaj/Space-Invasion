@@ -136,13 +136,16 @@ def game_main():
                     e.delayShoot -= 1
         if len(friendly_bullets) != 0:
             for b in friendly_bullets:
-                b.draw()
-                 #for hit check
-                for e in enemies:
-                    if b.rect.colliderect(e.rect):
-                        friendly_bullets.pop(friendly_bullets.index(b))
-                        print("aaaa")
-                        e.hit()
+                if b.y < 0:
+                    friendly_bullets.pop(friendly_bullets.index(b))
+                else:
+                    b.draw()
+                    #for hit check
+                    for e in enemies:
+                        if b.rect.colliderect(e.rect):
+                            friendly_bullets.pop(friendly_bullets.index(b))
+                            print("aaaa")
+                            e.hit()
         if len(enemy_bullet) != 0:
             for b in enemy_bullet:
                 b.draw()
@@ -154,7 +157,7 @@ def game_main():
                     #player.hit()
      
     delayShoot = 0
-    player = protagonist(game.height - 20, game.width / 2 - 40, 92, 75, game)
+    player = protagonist(game.width / 2 - 40, game.height - 200, 92, 75, game)
    
     
 
@@ -250,6 +253,7 @@ def main_menu():
             game_main()
             game.finishGame = False
             game.current_level = 1
+            game.score = 0
         if highscore.draw_button():
             highscore_win()
             print('highscore.')
