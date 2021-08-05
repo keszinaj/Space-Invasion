@@ -10,7 +10,7 @@ sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to 
 
 [ ] dodaj jednego bosa na koniec
 
-[ ] dodaj jakiąś oznake jak coś zostanie trafione!!!!
+[ ] dodaj jakiąś oznake jak coś zostanie trafione!!!! most important
 
 [ ] popraw algorytm rozstawiania się przeciwników
 
