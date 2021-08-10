@@ -19,8 +19,12 @@ class level(object):
                 game.current_level += 1
                 game.finishLevel = True
             elif enemies.rect.colliderect(player.rect):
-               # player.health -= 1
-                enemies.y -= 100
+                player.health -= 1
+                enemies.y = 0
+                enemies.x = game.width/2
+                player.y += 3
+                #fix bug
+                enemies.rect = pygame.Rect(0,game.width/2, enemies.width, enemies.height)
                 game.score -= 10
             elif enemies.y > game.height:
                 game.current_level += 1
@@ -30,7 +34,8 @@ class level(object):
                 enemies.draw()
             if enemies.y > 0:
                 if enemies.delayShoot == 0:
-                    enemy_bullet.append(bullet(1, enemies.x + 45, enemies.y + 36, 9, 33, game))
+                    enemy_bullet.append(bullet(1, enemies.x + 148, enemies.y + 100, 9, 33, game))
+                    enemy_bullet.append(bullet(1, enemies.x + 45, enemies.y + 100, 9, 33, game))
                     enemies.delayShoot = 100
                 else:
                     enemies.delayShoot -= 1

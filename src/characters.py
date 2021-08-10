@@ -118,10 +118,10 @@ class boss(object):
         
         self.game.win.blit(self.skin , (self.x, self.y))
         if (self.x <= self.endx + 10 and self.x >= self.endx - 10) and (self.y <= self.endy + 10 and self.y >= self.endy - 10) :
-            self.endx = random.randint(0, self.game.width - 60)
-            self.endy = random.randint(0, self.game.width - 60)
-            self.velx = random.randint(2, 7)
-            self.vely = random.randint(2, 7)
+            self.endx = random.randint(0, self.game.width - 100)
+            self.endy = random.randint(0, self.game.height - 60)
+            self.velx = random.randint(2, 6)
+            self.vely = random.randint(2, 6)
         else:
             if self.x > self.endx + 5 :
                 self.x -= self.velx
