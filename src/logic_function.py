@@ -22,3 +22,7 @@ def deployEnemies(game):
             
                 
         return list_of_enemies
+    else:
+        #class enemy(object):
+    #def __init__(self, x, y, width, height, skin, game, can_shot, points):
+        boss = enemy(game)

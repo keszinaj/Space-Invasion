@@ -21,14 +21,15 @@ class global_settings(object):
         # level logic
         self.score = 0
         self.highscore = []
-        self.max_level = 5
+        self.max_level = 6
         self.current_level = 1
         self.levels = {
-            1 : level(1000, 20, 0, False, False),
-            2 : level(1800, 30, 0, False, False),
-            3 : level(1500, 20, 5, False, False),
-            4 : level(1500, 20, 19, False, False),
-            5 : level(1400, 30, 29, False, False),     
+            1 : level(1000, 20, 0, False),
+            2 : level(1800, 30, 0, False),
+            3 : level(1500, 20, 5, False),
+            4 : level(1500, 20, 19, False),
+            5 : level(1400, 30, 29, False),
+            6 : level(1400, 15, 15, True),      
         }
         self.finishLevel = False
         self.finishGame = False

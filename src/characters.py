@@ -1,4 +1,23 @@
 import pygame
+
+class bullet(object):
+    def __init__(self, w,  x, y, width, height, game):
+        self.w = w
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height =height
+        self.vel = 12
+        self.skin =  pygame.image.load('../assets/laserGreen.png')
+        self.game = game
+        #for hit check
+        self.rect = pygame.Rect(x, y, width, height)
+    def draw(self):
+        self.game.win.blit(self.skin , (self.x, self.y))
+        self.y += self.w * 4
+         #for hit check
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+
 class protagonist(object):
     def __init__(self, x, y, width, height, game):
         # x y to spawn protagonist
@@ -57,6 +76,38 @@ class enemy(object):
         self.delayShoot = 0
         self.can_shot = can_shot
         self.points = points
+
+    def draw(self):
+        
+        self.game.win.blit(self.skin , (self.x, self.y))
+        #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
+        self.y += self.vel
+        #self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+         #for hit check
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        #pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
+    def hit(self):
+        self.health -= 1
+        if(self.health == 0):
+            self.visible = False
+        print('hit')
+
+
+class boss(object):
+    def __init__(self, x, y, width, height, skin, game):
+        # x and y to spawn enemy
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height =height
+        self.vel = 2
+        self.skin = skin
+        self.health = 1
+         #for hit check
+        self.rect = pygame.Rect(x, y, width, height)
+        self.game =game
+        self.delayShoot = 0
+        self.points = 100
 
     def draw(self):
         

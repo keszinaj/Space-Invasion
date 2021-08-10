@@ -1,7 +1,7 @@
 #main file of my game
 import pygame
 from settings import global_settings
-from characters import protagonist, enemy
+from characters import protagonist, enemy, bullet
 from logic_function import deployEnemies
 from lvl import level
 from button_cl import button
@@ -14,22 +14,6 @@ import time
                 
 
 
-class bullet(object):
-    def __init__(self, w,  x, y, width, height):
-        self.w = w
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height =height
-        self.vel = 12
-        self.skin =  pygame.image.load('../assets/laserGreen.png')
-        #for hit check
-        self.rect = pygame.Rect(x, y, width, height)
-    def draw(self):
-        game.win.blit(self.skin , (self.x, self.y))
-        self.y += self.w * 4
-         #for hit check
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         
 
 
@@ -40,52 +24,6 @@ game = global_settings(1000, 900)
 def game_main():
     shot_effect = pygame.mixer.Sound('../assets/laser1.wav')
     hit_effect = pygame.mixer.Sound('../assets/Explosion.wav')
-    def redraw():
-        game.draw()
-        player.draw()
-        game.draw_score()
-        for e in enemies:
-            if e.health == 0:
-                enemies.pop(enemies.index(e))
-                game.score += e.points
-                print(game.score)
-            elif e.rect.colliderect(player.rect):
-                enemies.pop(enemies.index(e))
-                player.health -= 1
-                game.score -= 10
-            elif e.y > game.height:
-                enemies.pop(enemies.index(e))
-            else:
-                e.draw()
-            if e.y > 0 and e.can_shot:
-                if e.delayShoot == 0:
-                    enemy_bullet.append(bullet(1, e.x + 45, e.y + 36, 9, 33))
-                    e.delayShoot = 100
-                else:
-                    e.delayShoot -= 1
-        if len(friendly_bullets) != 0:
-            for b in friendly_bullets:
-                if b.y < 0:
-                    friendly_bullets.pop(friendly_bullets.index(b))
-                else:
-                    b.draw()
-                    #for hit check
-                    for e in enemies:
-                        if b.rect.colliderect(e.rect):
-                            hit_effect.play()
-                            friendly_bullets.pop(friendly_bullets.index(b))
-                            print("aaaa")
-                            e.hit()
-        if len(enemy_bullet) != 0:
-            for b in enemy_bullet:
-                b.draw()
-                 #for hit check
-                if b.rect.colliderect(player.rect):
-                    enemy_bullet.pop(enemy_bullet.index(b))
-                    print("aaaa")
-                    hit_effect.play()
-                    player.health -= 1
-                    #player.hit()
      
     delayShoot = 0
     player = protagonist(game.width / 2 - 40, game.height - 200, 92, 75, game)
@@ -154,7 +92,7 @@ def game_main():
                 
             else:
                 pass
-            redraw()
+            game.levels[game.current_level].redraw(game, player, enemies, enemy_bullet, friendly_bullets, hit_effect)
             pygame.display.update()
             if len(enemies) == 0:
                 game.current_level += 1
