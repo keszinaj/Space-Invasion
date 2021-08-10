@@ -8,10 +8,11 @@ Todo następnym razenm:
 sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to use
 (chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
 
-[ ] dodaj jednego bosa na koniec
+[ ] dodaj jednego bosa na koniec, dobra dodaj dobre punkty
 
 [ ] dodaj jakiąś oznake jak coś zostanie trafione!!!! most important
-
+//ale to spowolnie i tak wolna gre może lepiej nie
 [ ] popraw algorytm rozstawiania się przeciwników
 
-[ ] dodaj ekran game over
+[ ] czemu nie ma czerwonych laserów
+
