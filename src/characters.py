@@ -1,5 +1,5 @@
 import pygame
-
+import random
 class bullet(object):
     def __init__(self, w,  x, y, width, height, game):
         self.w = w
@@ -100,24 +100,42 @@ class boss(object):
         self.y = y
         self.width = width
         self.height =height
-        self.vel = 2
         self.skin = skin
         self.health = 1
          #for hit check
         self.rect = pygame.Rect(x, y, width, height)
         self.game =game
+        #move
+        self.endx = 450
+        self.endy = 700
+        self.velx = 3
+        self.vely = 3
         self.delayShoot = 0
         self.points = 100
+        self.xway = 2 #-1 left 1 right
 
     def draw(self):
         
         self.game.win.blit(self.skin , (self.x, self.y))
-        #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
-        self.y += self.vel
-        #self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+        if (self.x <= self.endx + 10 and self.x >= self.endx - 10) and (self.y <= self.endy + 10 and self.y >= self.endy - 10) :
+            self.endx = random.randint(0, self.game.width - 60)
+            self.endy = random.randint(0, self.game.width - 60)
+            self.velx = random.randint(2, 7)
+            self.vely = random.randint(2, 7)
+        else:
+            if self.x > self.endx + 5 :
+                self.x -= self.velx
+            elif self.x < self.endx - 5:
+                self.x += self.velx
+            if self.y < self.endy - 5 :
+                self.y += self.vely
+            elif self.y > self.endy + 5 :
+                self.y -= self.vely
+
+
+        
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        #pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
     def hit(self):
         self.health -= 1
         if(self.health == 0):

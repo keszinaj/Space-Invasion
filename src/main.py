@@ -85,7 +85,7 @@ def game_main():
                     #pygame.mixer.music.play()
                    # effect = pygame.mixer.Sound('../assets/laser1.wav')
                     shot_effect.play()
-                    friendly_bullets.append(bullet(-1, player.x + 45, player.y - 37, 9, 33))
+                    friendly_bullets.append(bullet(-1, player.x + 45, player.y - 37, 9, 33, game))
                     delayShoot = 22
                 else:
                     delayShoot -=1
@@ -94,9 +94,6 @@ def game_main():
                 pass
             game.levels[game.current_level].redraw(game, player, enemies, enemy_bullet, friendly_bullets, hit_effect)
             pygame.display.update()
-            if len(enemies) == 0:
-                game.current_level += 1
-                game.finishLevel = True
             if player.health == 0:
                 you_lose(game)
                 game.finishLevel = True

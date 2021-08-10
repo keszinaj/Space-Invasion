@@ -1,6 +1,6 @@
 import pygame
 import random
-from characters import  enemy
+from characters import  enemy, boss
 from lvl import level
 # no ta funkcja to jest na 100% do poprawy ale na razie zostawie tak jak jest bo skupmy się na działaniu samej gry
 def deployEnemies(game):
@@ -25,4 +25,4 @@ def deployEnemies(game):
     else:
         #class enemy(object):
     #def __init__(self, x, y, width, height, skin, game, can_shot, points):
-        boss = enemy(game)
+        return boss( 400, 0, 200, 111, game.levels[game.current_level].boss_skin, game)

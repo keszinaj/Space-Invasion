@@ -24,13 +24,19 @@ class global_settings(object):
         self.max_level = 6
         self.current_level = 1
         self.levels = {
-            1 : level(1000, 20, 0, False),
-            2 : level(1800, 30, 0, False),
-            3 : level(1500, 20, 5, False),
-            4 : level(1500, 20, 19, False),
-            5 : level(1400, 30, 29, False),
+            1 : level(100, 2, 0, True),
+            2 : level(180, 3, 0, False),
+            3 : level(150, 2, 5, False),
+            4 : level(150, 1, 1, False),
+            5 : level(140, 1, 0, False),
             6 : level(1400, 15, 15, True),      
         }
+        #1 : level(1000, 20, 0, False),
+        #    2 : level(1800, 30, 0, False),
+          #  3 : level(1500, 20, 5, False),
+           # 4 : level(1500, 20, 19, False),
+           # 5 : level(1400, 30, 29, False),
+           # 6 : level(1400, 15, 15, True),  
         self.finishLevel = False
         self.finishGame = False
     # to redraw the windows
