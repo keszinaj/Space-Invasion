@@ -8,7 +8,10 @@ class bullet(object):
         self.width = width
         self.height =height
         self.vel = 12
-        self.skin =  pygame.image.load('../assets/laserGreen.png')
+        if w == -1:
+            self.skin =  pygame.image.load('../assets/laserGreen.png')
+        else:
+            self.skin =  pygame.image.load('../assets/laserRed.png')
         self.game = game
         #for hit check
         self.rect = pygame.Rect(x, y, width, height)

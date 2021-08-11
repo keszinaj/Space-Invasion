@@ -14,5 +14,5 @@ sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to 
 //ale to spowolnie i tak wolna gre może lepiej nie
 [ ] popraw algorytm rozstawiania się przeciwników
 
-[ ] czemu nie ma czerwonych laserów
+
 
