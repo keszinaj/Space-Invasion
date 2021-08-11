@@ -32,6 +32,7 @@ def you_win(game):
     text_1 = "You Win!"
     text_2 = "Score: " + str(game.score)
     text_3 = "Click escape to leave"
+    new_highscore = game.check_if_new_high_score(game.score)
     text1_img = game.font_2.render(text_1, False, (255, 255, 255))
     text2_img = game.font_2.render(text_2, False, (255, 255, 255))
     text3_img = game.font.render(text_3, False, (255, 255, 255))
@@ -41,6 +42,11 @@ def you_win(game):
     game.win.blit(text2_img, (game.width / 2 - (text2_len/2), 300))
     text3_len = text3_img.get_width()
     game.win.blit(text3_img, (game.width / 2 - (text3_len/2), 800))
+    if new_highscore:
+        text_4 = "Good Score!!!"
+        text4_img = game.font_2.render(text_4, False, (255, 255, 255))
+        text4_len = text4_img.get_width()
+        game.win.blit(text4_img, (game.width / 2 - (text4_len/2), 400))
     pygame.display.update()
     check = True
     while check:

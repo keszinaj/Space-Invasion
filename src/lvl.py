@@ -68,7 +68,7 @@ class level(object):
             game.draw_score()
             amount_of_enemies = len(enemies)
             i = 0
-            #while loop fix the problem with falsh
+            #while loop fix the problem with flash
             while i < amount_of_enemies:
                 e = enemies[i]
                 if e.health == 0:

@@ -4,9 +4,8 @@ gracz może się poruszać strzałkami dowolną strone ale nie może wyjść poz
 strzela spacją 
 
 Todo następnym razenm:
-[ ]dodaj latających wrogów, tam w assets nie ma zbyt wielkiego wyboru ale możesz 
-sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to use
-(chyba chce zrobić 3 lvl po każdym lvl jakiś większy boss?)
+[ ]może po 3 lvl jakiś taki troche wolniejszy boss i dopiero na koniec dowalimy
+jego wszystkie możliwości????
 
 [ ]  dobra dodaj dobre punkty do bosa
 
@@ -14,8 +13,8 @@ sobie poszukać w necie ten gościu powstawiał jeszcze podobne grafiki free to 
 //ale to spowolnie i tak wolna gre może lepiej nie
 
 
-[ ] jest jakis błąd jak wygramy gre
-
+[ ] czasami pojawie się błąd przy strzelaniu, należly to chyba przerobić na pętle while 
+tak jak to zrobiłem z tym niżej
 
 no okej miałem fajny błąd z migającymi wrogami okazało sie 
 że po prostu musiałem zmienić pętle z for e in enemies na for loop 

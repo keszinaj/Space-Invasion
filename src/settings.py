@@ -24,7 +24,7 @@ class global_settings(object):
         self.max_level = 6
         self.current_level = 1
         self.levels = {
-            1 : level(100, 30, 0, False),
+            1 : level(100, 3, 0, False),
             2 : level(180, 3, 0, False),
             3 : level(150, 2, 5, False),
             4 : level(150, 1, 1, False),

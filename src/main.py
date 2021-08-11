@@ -35,7 +35,7 @@ def game_main():
         if game.current_level > game.max_level:
             game.finishGame = True
             game.finishLevel = True
-            you_win()
+            you_win(game)
             game.check_if_new_high_score(game.score)
         else:
             game.finishLevel = False
