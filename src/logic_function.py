@@ -6,18 +6,28 @@ from lvl import level
 def deployEnemies(game):
     if game.levels[game.current_level].boss == False:
         list_of_enemies = []
-        n = game.levels[game.current_level].length
+        len = game.levels[game.current_level].length
+        plus_space = len / game.levels[game.current_level].amount_of_ufos
+        end = plus_space
+        start = 0
         
 
         for e in range(game.levels[game.current_level].amount_of_ufos):
-            y = -random.randint(0, game.levels[game.current_level].length)
+            y = -random.randint(start, end)
             x = random.randint(46, game.width - 46)
             print(y)
-            
+            start = end
+            end += len
             list_of_enemies.append(enemy(x, y, 92, 92, game.levels[game.current_level].ufo_skin, game, False, 10))
+        if game.levels[game.current_level].amoun_of_ships != 0:
+            plus_space = len / game.levels[game.current_level].amoun_of_ships
+        end = plus_space
+        start = 0
         for e in range(game.levels[game.current_level].amoun_of_ships):
-            y = -random.randint(0, game.levels[game.current_level].length)
+            y = -random.randint(start, end)
             x = random.randint(0, game.width)
+            start = end
+            end += len
             list_of_enemies.append(enemy(x, y, 92, 52, game.levels[game.current_level].ship_skin, game, True, 15))
             
                 
