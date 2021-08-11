@@ -66,17 +66,27 @@ class level(object):
             game.draw()
             player.draw()
             game.draw_score()
-            for e in enemies:
+            amount_of_enemies = len(enemies)
+            i = 0
+            #while loop fix the problem with falsh
+            while i < amount_of_enemies:
+                e = enemies[i]
                 if e.health == 0:
                     enemies.pop(enemies.index(e))
+                    amount_of_enemies -= 1
                     game.score += e.points
                     print(game.score)
+                    continue
                 elif e.rect.colliderect(player.rect):
                     enemies.pop(enemies.index(e))
                     player.health -= 1
                     game.score -= 10
+                    amount_of_enemies -= 1
+                    continue
                 elif e.y > game.height:
                     enemies.pop(enemies.index(e))
+                    amount_of_enemies -= 1
+                    continue
                 else:
                     e.draw()
                 if e.y > 0 and e.can_shot:
@@ -85,6 +95,7 @@ class level(object):
                         e.delayShoot = 100
                     else:
                         e.delayShoot -= 1
+                i += 1
             if len(friendly_bullets) != 0:
                 for b in friendly_bullets:
                     if b.y < 0:

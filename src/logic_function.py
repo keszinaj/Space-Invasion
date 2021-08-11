@@ -7,7 +7,7 @@ def deployEnemies(game):
     if game.levels[game.current_level].boss == False:
         list_of_enemies = []
         len = game.levels[game.current_level].length
-        plus_space = len / game.levels[game.current_level].amount_of_ufos
+        plus_space = len // game.levels[game.current_level].amount_of_ufos
         end = plus_space
         start = 0
         
@@ -20,7 +20,7 @@ def deployEnemies(game):
             end += len
             list_of_enemies.append(enemy(x, y, 92, 92, game.levels[game.current_level].ufo_skin, game, False, 10))
         if game.levels[game.current_level].amoun_of_ships != 0:
-            plus_space = len / game.levels[game.current_level].amoun_of_ships
+            plus_space = len // game.levels[game.current_level].amoun_of_ships
         end = plus_space
         start = 0
         for e in range(game.levels[game.current_level].amoun_of_ships):
