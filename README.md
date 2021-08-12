@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/keszinaj/Space-Invasion">
-    <img src="logogit.png" alt="Logo" width="536" height="900">
+    <img src="logogit.png" alt="Logo" width="900" height="536">
   </a>
 
   <h3 align="center">pSpace Invasion</h3>
