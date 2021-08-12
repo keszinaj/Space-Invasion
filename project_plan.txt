@@ -1,23 +1,3 @@
-dobra a więc jaki jest pan na gre?
-a więc mamy obroinić planetę przed atakiem złych sił nadlatujący z kosmicznej przesytrzeni
-gracz może się poruszać strzałkami dowolną strone ale nie może wyjść poza planesze
-strzela spacją 
-
-Todo następnym razenm:
-[ ]może po 3 lvl jakiś taki troche wolniejszy boss i dopiero na koniec dowalimy
-jego wszystkie możliwości????
-
-[ ]  dobra dodaj dobre punkty do bosa
-
-[ ] dodaj jakiąś oznake jak coś zostanie trafione!!!! most important
-//ale to spowolnie i tak wolna gre może lepiej nie
 
 
-[ ] czasami pojawie się błąd przy strzelaniu, należly to chyba przerobić na pętle while 
-tak jak to zrobiłem z tym niżej
 
-no okej miałem fajny błąd z migającymi wrogami okazało sie 
-że po prostu musiałem zmienić pętle z for e in enemies na for loop 
-bo tam jak 1 znikał to 2 się przez 1 przejście nie rysował i migał fajny bug
-
-[ ] pojawia się błąd jak przegram z bosem :(
