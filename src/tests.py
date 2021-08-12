@@ -1,7 +1,2 @@
-
-f = open("./high_score.txt", "w")
-list = [1, 2, 3, 4, 5]
-for l in list:
-    straa = str(l) + "\n" 
-    f.write(straa)
-f.close()
+a = [1, 2, 3, 4, 5, 6, 7 , 8, 6, 10]
+b = range

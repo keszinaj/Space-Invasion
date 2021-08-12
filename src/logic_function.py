@@ -18,7 +18,7 @@ def deployEnemies(game):
             print(y)
             start = end
             end += len
-            list_of_enemies.append(enemy(x, y, 92, 92, game.levels[game.current_level].ufo_skin, game, False, 10))
+            list_of_enemies.append(enemy(x, y, 91, 91, game.levels[game.current_level].ufo_skin, game, False, 10))
         if game.levels[game.current_level].amoun_of_ships != 0:
             plus_space = len // game.levels[game.current_level].amoun_of_ships
         end = plus_space

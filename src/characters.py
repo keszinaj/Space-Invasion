@@ -20,7 +20,6 @@ class bullet(object):
         self.y += self.w * 4
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-
 class protagonist(object):
     def __init__(self, x, y, width, height, game):
         # x y to spawn protagonist

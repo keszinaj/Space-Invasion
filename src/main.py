@@ -54,7 +54,7 @@ def game_main():
 
 
         while not game.finishLevel:
-            game.clock.tick(60)#fps
+            game.clock.tick(30)#fps
             #handle delay shoot
             if delayShoot != 0:
                 delayShoot -= 1

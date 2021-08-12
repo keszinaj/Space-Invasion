@@ -19,3 +19,5 @@ tak jak to zrobiłem z tym niżej
 no okej miałem fajny błąd z migającymi wrogami okazało sie 
 że po prostu musiałem zmienić pętle z for e in enemies na for loop 
 bo tam jak 1 znikał to 2 się przez 1 przejście nie rysował i migał fajny bug
+
+[ ] pojawia się błąd jak przegram z bosem :(

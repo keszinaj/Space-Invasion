@@ -11,6 +11,8 @@ class level(object):
         self.boss = boss
         self.boss_skin = pygame.image.load('../assets/boss.png')
     def redraw(self, game, player, enemies, enemy_bullet, friendly_bullets, hit_effect):
+        green_hit   = pygame.image.load('../assets/laserGreenShot.png')
+        red_hit= pygame.image.load('../assets/laserRedShot.png')
         if self.boss:
             game.draw()
             player.draw()
@@ -48,6 +50,7 @@ class level(object):
                         #for hit check
                         if b.rect.colliderect(enemies.rect):
                             hit_effect.play()
+                            game.win.blit(green_hit, (b.x - 24, b.y - 3))
                             friendly_bullets.pop(friendly_bullets.index(b))
                             print("aaaa")
                             enemies.hit()
@@ -68,6 +71,7 @@ class level(object):
             game.draw_score()
             amount_of_enemies = len(enemies)
             i = 0
+            
             #while loop fix the problem with flash
             while i < amount_of_enemies:
                 e = enemies[i]
@@ -78,6 +82,7 @@ class level(object):
                     print(game.score)
                     continue
                 elif e.rect.colliderect(player.rect):
+                    game.win.blit(red_hit, (e.x + e.width // 4 , e.y + e.height // 4))
                     enemies.pop(enemies.index(e))
                     player.health -= 1
                     game.score -= 10
@@ -105,7 +110,9 @@ class level(object):
                         #for hit check
                         for e in enemies:
                             if b.rect.colliderect(e.rect):
-                                hit_effect.play()
+                                game.win.blit(green_hit, (b.x - 24, b.y - 3))
+                                hit_effect.play()                    
+                                print("rysuj")
                                 friendly_bullets.pop(friendly_bullets.index(b))
                                 print("aaaa")
                                 e.hit()
@@ -114,6 +121,7 @@ class level(object):
                     b.draw()
                     #for hit check
                     if b.rect.colliderect(player.rect):
+                        game.win.blit(red_hit, (b.x - 24, b.y - 3))
                         enemy_bullet.pop(enemy_bullet.index(b))
                         print("aaaa")
                         hit_effect.play()
