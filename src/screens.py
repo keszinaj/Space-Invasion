@@ -24,8 +24,8 @@ def highscore_win(game):
             if keys[pygame.K_ESCAPE]:
                 check = False
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
+                if event.type == pygame.QUIT: 
+                    check = False
 
 def you_win(game):
     #game.draw()
@@ -55,8 +55,8 @@ def you_win(game):
                 check = False
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-def you_lose(game):
+                    check = False
+def you_lose(game, player):
     #game.draw()
     text_1 = "You Lose!"
     text_2 = "Score: " + str(game.score)
@@ -70,6 +70,7 @@ def you_lose(game):
     game.win.blit(text2_img, (game.width / 2 - (text2_len/2), 300))
     text3_len = text3_img.get_width()
     game.win.blit(text3_img, (game.width / 2 - (text3_len/2), 800))
+    player.game.win.blit(player.flyDamaged , (player.x, player.y))
     pygame.display.update()
     check = True
     while check:
@@ -78,7 +79,8 @@ def you_lose(game):
                 check = False
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
+                    check = False
+                    #pygame.quit()
     
 
 def info_win(game):
@@ -100,6 +102,6 @@ def info_win(game):
                 check = False
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
+                    check = False
                     
 

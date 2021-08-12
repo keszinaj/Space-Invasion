@@ -48,7 +48,7 @@ class protagonist(object):
     def draw(self):
         for h in range(self.health):
             self.game.win.blit(self.healthImage , (self.game.width - 50, self.game.height - (h + 1) * 50))
-        if self.pos == 1 and self.health > 2:
+        if self.pos == 1:
             self.game.win.blit(self.flyCenter , (self.x, self.y))
         elif self.health == 0:
             self.game.win.blit(self.flyDamaged , (self.x, self.y))
