@@ -13,11 +13,13 @@ class level(object):
     def redraw(self, game, player, enemies, enemy_bullet, friendly_bullets, hit_effect):
         green_hit   = pygame.image.load('../assets/laserGreenShot.png')
         red_hit= pygame.image.load('../assets/laserRedShot.png')
+        boss_bum = pygame.image.load('../assets/boss_died.png')
         if self.boss:
             game.draw()
             player.draw()
             game.draw_score()
             if enemies.health == 0:
+                game.win.blit(boss_bum, (enemies.x, enemies.y))
                 game.current_level += 1
                 game.finishLevel = True
             elif enemies.rect.colliderect(player.rect):

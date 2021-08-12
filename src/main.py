@@ -86,7 +86,7 @@ def game_main():
                    # effect = pygame.mixer.Sound('../assets/laser1.wav')
                     shot_effect.play()
                     friendly_bullets.append(bullet(-1, player.x + 45, player.y - 37, 9, 33, game))
-                    delayShoot = 22
+                    delayShoot = 15
                 else:
                     delayShoot -=1
                 

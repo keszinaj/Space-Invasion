@@ -17,7 +17,7 @@ class bullet(object):
         self.rect = pygame.Rect(x, y, width, height)
     def draw(self):
         self.game.win.blit(self.skin , (self.x, self.y))
-        self.y += self.w * 4
+        self.y += self.w * self.vel
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 class protagonist(object):
@@ -29,7 +29,7 @@ class protagonist(object):
         self.width = width
         self.height = height
         #how much on x and y protagonist fly
-        self.vel = 5
+        self.vel = 7
         #position for skin 1 def 2-left 3-right
         self.pos = 1
         #skins for protagonist
@@ -69,7 +69,7 @@ class enemy(object):
         self.y = y
         self.width = width
         self.height =height
-        self.vel = 2
+        self.vel = 5
         self.skin = skin
         self.health = 1
          #for hit check
