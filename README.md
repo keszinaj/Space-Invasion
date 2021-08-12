@@ -1,2 +1,16 @@
-# Work in progress
-![logogit](https://user-images.githubusercontent.com/58864317/127746835-32bcbb09-9ed4-4f43-b2ba-24138637b9c3.png)
+<br />
+<p align="center">
+  <a href="https://github.com/keszinaj/Space-Invasion">
+    <img src="logogit.png" alt="Logo" width="536" height="900">
+  </a>
+
+  <h3 align="center">pSpace Invasion</h3>
+
+  <p align="center">
+    Open source shooter game
+    <br />
+    <a href="#about-the-project"><strong>Explore gifs from the game »</strong></a>
+    <br />
+    <br />
+  </p>
+</p>
