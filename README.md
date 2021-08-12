@@ -1,4 +1,4 @@
-#Space Invasion
+# Space Invasion
 <p align="center">
   <a href="https://github.com/keszinaj/Space-Invasion">
     <img src="logogit.png" alt="Logo" width="900" height="536">
@@ -21,7 +21,7 @@ Space Invaasion is a simple open source shooter game. It's my first program writ
   cd Space-Invasion/src
   ```
 3. Play
-  `l`sh
+  ```sh
   python3 main.py
   ```
  ## Acknowledgements
