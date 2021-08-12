@@ -18,6 +18,7 @@ class level(object):
             game.draw()
             player.draw()
             game.draw_score()
+
             if enemies.health == 0:
                 game.win.blit(self.boss_bum, (enemies.x, enemies.y))
                 game.current_level += 1
@@ -36,36 +37,51 @@ class level(object):
                 
             else:
                 enemies.draw()
-            if enemies.y > 0:
-                if enemies.delayShoot == 0:
-                    enemy_bullet.append(bullet(1, enemies.x + 148, enemies.y + 100, 9, 33, game))
-                    enemy_bullet.append(bullet(1, enemies.x + 45, enemies.y + 100, 9, 33, game))
-                    enemies.delayShoot = 100
-                else:
-                    enemies.delayShoot -= 1
+            
+            if enemies.delayShoot == 0:
+                enemy_bullet.append(bullet(1, enemies.x + 148, enemies.y + 100, 9, 33, game))
+                enemy_bullet.append(bullet(1, enemies.x + 45, enemies.y + 100, 9, 33, game))
+                enemies.delayShoot = 100
+            else:
+                enemies.delayShoot -= 1
+
             if len(friendly_bullets) != 0:
-                for b in friendly_bullets:
-                    if b.y < 0:
-                        friendly_bullets.pop(friendly_bullets.index(b))
+                imax  = len(friendly_bullets)
+                i = 0
+                while i < imax:
+                    if friendly_bullets[i].y < 0:
+                        friendly_bullets.pop(i)
+                        imax -= 1
                     else:
-                        b.draw()
+                        friendly_bullets[i].draw()
                         #for hit check
-                        if b.rect.colliderect(enemies.rect):
+                        if friendly_bullets[i].rect.colliderect(enemies.rect):
                             hit_effect.play()
-                            game.win.blit(self.green_hit, (b.x - 24, b.y - 3))
-                            friendly_bullets.pop(friendly_bullets.index(b))
+                            game.win.blit(self.green_hit, (friendly_bullets[i].x - 24, friendly_bullets[i].y - 3))
+                            friendly_bullets.pop(i)
+                            imax -= 1
                             print("aaaa")
                             enemies.hit()
+                        else:
+                            i += 1
             if len(enemy_bullet) != 0:
-                for b in enemy_bullet:
+                imax  = len(enemy_bullet)
+                i = 0
+                while i < imax:
+                    b = enemy_bullet[i]
                     b.draw()
                     #for hit check
-                    if b.rect.colliderect(player.rect):
-                        enemy_bullet.pop(enemy_bullet.index(b))
+                    if b.y > game.height:
+                        enemy_bullet.pop(i)
+                        imax -= 1
+                    elif b.rect.colliderect(player.rect):
+                        enemy_bullet.pop(i)
                         print("aaaa")
                         hit_effect.play()
                         player.health -= 1
-                        #player.hit()
+                        imax -= 1
+                    else:
+                        i += 1
             
         else:
             game.draw()
@@ -82,53 +98,64 @@ class level(object):
                     amount_of_enemies -= 1
                     game.score += e.points
                     print(game.score)
-                    continue
                 elif e.rect.colliderect(player.rect):
                     game.win.blit(self.red_hit, (e.x + e.width // 4 , e.y + e.height // 4))
                     enemies.pop(enemies.index(e))
                     player.health -= 1
                     game.score -= 10
                     amount_of_enemies -= 1
-                    continue
                 elif e.y > game.height:
                     enemies.pop(enemies.index(e))
                     amount_of_enemies -= 1
-                    continue
                 else:
+                    i += 1
                     e.draw()
                 if e.y > 0 and e.can_shot:
                     if e.delayShoot == 0:
+                        print("a")
                         enemy_bullet.append(bullet(1, e.x + 45, e.y + 36, 9, 33, game))
                         e.delayShoot = 100
                     else:
                         e.delayShoot -= 1
-                i += 1
+                
             if len(friendly_bullets) != 0:
-                for b in friendly_bullets:
+                i = 0
+                imax = len(friendly_bullets)
+                while i < imax:
+                    b = friendly_bullets[i]
                     if b.y < 0:
-                        friendly_bullets.pop(friendly_bullets.index(b))
+                        friendly_bullets.pop(i)
+                        imax -= 1
                     else:
                         b.draw()
                         #for hit check
                         for e in enemies:
                             if b.rect.colliderect(e.rect):
                                 game.win.blit(self.green_hit, (b.x - 24, b.y - 3))
-                                hit_effect.play()                    
-                                print("rysuj")
-                                friendly_bullets.pop(friendly_bullets.index(b))
-                                print("aaaa")
+                                hit_effect.play()                                                  
+                                friendly_bullets.pop(i)
+                                imax -= 1
+                                i-=1
                                 e.hit()
+                                break
+                        i += 1
+                                
             if len(enemy_bullet) != 0:
-                for b in enemy_bullet:
+                i = 0
+                imax = len(enemy_bullet)
+                while i < imax:
+                    b = enemy_bullet[i]
                     b.draw()
                     #for hit check
                     if b.rect.colliderect(player.rect):
                         game.win.blit(self.red_hit, (b.x - 24, b.y - 3))
-                        enemy_bullet.pop(enemy_bullet.index(b))
-                        print("aaaa")
+                        enemy_bullet.pop(i)
                         hit_effect.play()
+                        imax -= 1
                         player.health -= 1
-                        #player.hit()
+                    else:
+                        i += 1
+                        
             if len(enemies) == 0:
                 game.current_level += 1
                 game.finishLevel = True

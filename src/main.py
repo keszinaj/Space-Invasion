@@ -81,10 +81,7 @@ def game_main():
                 player.y += player.vel
             if keys[pygame.K_SPACE]:
                 if delayShoot == 0:
-                    #add credit to music Author: dklon
-                    #pygame.mixer.music.load('../assets/laser1.wav')
-                    #pygame.mixer.music.play()
-                   # effect = pygame.mixer.Sound('../assets/laser1.wav')
+
                     shot_effect.play()
                     friendly_bullets.append(bullet(-1, player.x + 45, player.y - 37, 9, 33, game))
                     delayShoot = 15

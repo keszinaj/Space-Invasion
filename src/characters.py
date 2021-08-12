@@ -33,13 +33,13 @@ class protagonist(object):
         #position for skin 1 def 2-left 3-right
         self.pos = 1
         #skins for protagonist
-        self.flyLeft = pygame.image.load('../assets/playerLeft.png')
-        self.flyRight = pygame.image.load('../assets/playerRight.png')
-        self.flyCenter = pygame.image.load('../assets/player.png')
-        self.flyDamaged = pygame.image.load('../assets/playerDamaged.png')
+        self.flyLeft = pygame.image.load('../assets/playerLeft.png').convert_alpha()
+        self.flyRight = pygame.image.load('../assets/playerRight.png').convert_alpha()
+        self.flyCenter = pygame.image.load('../assets/player.png').convert_alpha()
+        self.flyDamaged = pygame.image.load('../assets/playerDamaged.png').convert_alpha()
         # self health:
         self.health = 4   
-        self.healthImage = pygame.image.load('../assets/life.png')
+        self.healthImage = pygame.image.load('../assets/life.png').convert_alpha()
         #for checking if hit
         self.rect = pygame.Rect(x, y, width, height)
         
@@ -50,7 +50,7 @@ class protagonist(object):
             self.game.win.blit(self.healthImage , (self.game.width - 50, self.game.height - (h + 1) * 50))
         if self.pos == 1 and self.health > 2:
             self.game.win.blit(self.flyCenter , (self.x, self.y))
-        elif self.health <= 2:#IDK chyba to wywale
+        elif self.health == 0:
             self.game.win.blit(self.flyDamaged , (self.x, self.y))
         elif self.pos == 2:
             self.game.win.blit(self.flyLeft , (self.x, self.y))
@@ -58,8 +58,6 @@ class protagonist(object):
             self.game.win.blit(self.flyRight  , (self.x, self.y))
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-       # self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
-       # pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
 
 
 class enemy(object):
@@ -82,12 +80,10 @@ class enemy(object):
     def draw(self):
         
         self.game.win.blit(self.skin , (self.x, self.y))
-        #pygame.draw.rect(game.win, (255, 0 ,0), (self.x, self.y, 50, 50), 0)
-        self.y += self.vel
-        #self.hitbox= (self.x , self.y, self.width, self.height) # ta czerwona ramka
+        self.y += self.vel       
          #for hit check
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        #pygame.draw.rect(self.game.win, (255,0,0), self.hitbox, 2)
+        
     def hit(self):
         self.health -= 1
         if(self.health == 0):
@@ -103,7 +99,7 @@ class boss(object):
         self.width = width
         self.height =height
         self.skin = skin
-        self.health = 1
+        self.health = 6
          #for hit check
         self.rect = pygame.Rect(x, y, width, height)
         self.game =game
