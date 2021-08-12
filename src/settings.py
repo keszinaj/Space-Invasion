@@ -3,6 +3,12 @@ from lvl import level
 
 class global_settings(object):
     def __init__(self, width, height):
+        #load music and pictures
+        self.shot_effect = pygame.mixer.Sound('../assets/laser1.wav')
+        self.hit_effect = pygame.mixer.Sound('../assets/Explosion.wav')
+        self.logo = pygame.image.load('../assets/logo.png').convert_alpha()
+        self.laserGreen =  pygame.image.load('../assets/laserGreen.png').convert_alpha()
+        self.laserRed =  pygame.image.load('../assets/laserRed.png').convert_alpha()
         #size of window
         self.width = width
         self.height = height
@@ -15,7 +21,7 @@ class global_settings(object):
         self.font_2 = pygame.font.SysFont('Constantia', 90, bold=True, italic=False)
         
         #load background
-        self.backg = pygame.image.load("../assets/backg.jpeg")
+        self.backg = pygame.image.load("../assets/backg.jpeg").convert_alpha()
         self.win.blit(self.backg, (0,0)) #hmm should i delete it?
         self.run = True #hmmm
         # level logic

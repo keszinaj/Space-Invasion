@@ -18,8 +18,9 @@ import time
 
 
 pygame.init()
+pygame.display.set_mode()    
 game = global_settings(1000, 900)
-             
+           
 
 def game_main():
     shot_effect = pygame.mixer.Sound('../assets/laser1.wav')
@@ -54,7 +55,7 @@ def game_main():
 
 
         while not game.finishLevel:
-            game.clock.tick(30)#fps
+            game.clock.tick(60)#fps
             #handle delay shoot
             if delayShoot != 0:
                 delayShoot -= 1
@@ -108,7 +109,7 @@ def game_main():
 
 
 def main_menu():
-    logo = pygame.image.load('../assets/logo.png')
+    logo = pygame.image.load('../assets/logo.png').convert_alpha()
     play = button(410, 450, 'Play', game)
     highscore = button(410, 550, 'High Score', game)
     info = button(410, 650, 'Info', game)

@@ -5,21 +5,21 @@ class level(object):
     def __init__(self, length,  ufo, ship, boss):
         self.length = length
         self.amount_of_ufos = ufo
-        self.ufo_skin = pygame.image.load('../assets/enemyUFO.png')
+        self.ufo_skin = pygame.image.load('../assets/enemyUFO.png').convert_alpha()
         self.amoun_of_ships = ship
-        self.ship_skin = pygame.image.load('../assets/enemyShip.png')
+        self.ship_skin = pygame.image.load('../assets/enemyShip.png').convert_alpha()
         self.boss = boss
-        self.boss_skin = pygame.image.load('../assets/boss.png')
+        self.boss_skin = pygame.image.load('../assets/boss.png').convert_alpha()
+        self.green_hit   = pygame.image.load('../assets/laserGreenShot.png').convert_alpha()
+        self.red_hit= pygame.image.load('../assets/laserRedShot.png').convert_alpha()
+        self.boss_bum = pygame.image.load('../assets/boss_died.png').convert_alpha()
     def redraw(self, game, player, enemies, enemy_bullet, friendly_bullets, hit_effect):
-        green_hit   = pygame.image.load('../assets/laserGreenShot.png')
-        red_hit= pygame.image.load('../assets/laserRedShot.png')
-        boss_bum = pygame.image.load('../assets/boss_died.png')
         if self.boss:
             game.draw()
             player.draw()
             game.draw_score()
             if enemies.health == 0:
-                game.win.blit(boss_bum, (enemies.x, enemies.y))
+                game.win.blit(self.boss_bum, (enemies.x, enemies.y))
                 game.current_level += 1
                 game.finishLevel = True
             elif enemies.rect.colliderect(player.rect):
@@ -52,7 +52,7 @@ class level(object):
                         #for hit check
                         if b.rect.colliderect(enemies.rect):
                             hit_effect.play()
-                            game.win.blit(green_hit, (b.x - 24, b.y - 3))
+                            game.win.blit(self.green_hit, (b.x - 24, b.y - 3))
                             friendly_bullets.pop(friendly_bullets.index(b))
                             print("aaaa")
                             enemies.hit()
@@ -84,7 +84,7 @@ class level(object):
                     print(game.score)
                     continue
                 elif e.rect.colliderect(player.rect):
-                    game.win.blit(red_hit, (e.x + e.width // 4 , e.y + e.height // 4))
+                    game.win.blit(self.red_hit, (e.x + e.width // 4 , e.y + e.height // 4))
                     enemies.pop(enemies.index(e))
                     player.health -= 1
                     game.score -= 10
@@ -112,7 +112,7 @@ class level(object):
                         #for hit check
                         for e in enemies:
                             if b.rect.colliderect(e.rect):
-                                game.win.blit(green_hit, (b.x - 24, b.y - 3))
+                                game.win.blit(self.green_hit, (b.x - 24, b.y - 3))
                                 hit_effect.play()                    
                                 print("rysuj")
                                 friendly_bullets.pop(friendly_bullets.index(b))
@@ -123,7 +123,7 @@ class level(object):
                     b.draw()
                     #for hit check
                     if b.rect.colliderect(player.rect):
-                        game.win.blit(red_hit, (b.x - 24, b.y - 3))
+                        game.win.blit(self.red_hit, (b.x - 24, b.y - 3))
                         enemy_bullet.pop(enemy_bullet.index(b))
                         print("aaaa")
                         hit_effect.play()
